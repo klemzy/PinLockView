@@ -1,5 +1,6 @@
 package com.andrognito.pinlockview;
 
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 
 /**
@@ -18,6 +19,7 @@ public class CustomizationOptionsBundle {
     private int deleteButtonSize;
     private boolean showDeleteButton;
     private int deleteButtonPressesColor;
+    private Typeface typeface;
 
     public CustomizationOptionsBundle() {
     }
@@ -84,5 +86,13 @@ public class CustomizationOptionsBundle {
 
     public void setDeleteButtonPressesColor(int deleteButtonPressesColor) {
         this.deleteButtonPressesColor = deleteButtonPressesColor;
+    }
+
+    public void setTypeface(Typeface typeface) {
+        this.typeface = typeface;
+    }
+
+    public Typeface getTypeface() {
+        return typeface;
     }
 }

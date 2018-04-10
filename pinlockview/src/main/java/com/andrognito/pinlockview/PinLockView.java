@@ -2,8 +2,10 @@ package com.andrognito.pinlockview;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 
@@ -28,6 +30,7 @@ public class PinLockView extends RecyclerView {
     private Drawable mButtonBackgroundDrawable;
     private Drawable mDeleteButtonDrawable;
     private boolean mShowDeleteButton;
+    private Typeface mTypeface;
 
     private IndicatorDots mIndicatorDots;
     private PinLockAdapter mAdapter;
@@ -151,6 +154,12 @@ public class PinLockView extends RecyclerView {
             mDeleteButtonDrawable = typedArray.getDrawable(R.styleable.PinLockView_keypadDeleteButtonDrawable);
             mShowDeleteButton = typedArray.getBoolean(R.styleable.PinLockView_keypadShowDeleteButton, true);
             mDeleteButtonPressedColor = typedArray.getColor(R.styleable.PinLockView_keypadDeleteButtonPressedColor, ResourceUtils.getColor(getContext(), R.color.greyish));
+
+            int resourceId = typedArray.getResourceId(R.styleable.PinLockView_keypadFontFamily, -1);
+            if (resourceId != -1) {
+                mTypeface = ResourcesCompat.getFont(getContext(), resourceId);
+            }
+
         } finally {
             typedArray.recycle();
         }
@@ -164,6 +173,7 @@ public class PinLockView extends RecyclerView {
         mCustomizationOptionsBundle.setDeleteButtonSize(mDeleteButtonSize);
         mCustomizationOptionsBundle.setShowDeleteButton(mShowDeleteButton);
         mCustomizationOptionsBundle.setDeleteButtonPressesColor(mDeleteButtonPressedColor);
+        mCustomizationOptionsBundle.setTypeface(mTypeface);
 
         initView();
     }

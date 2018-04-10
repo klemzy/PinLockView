@@ -88,6 +88,10 @@ public class PinLockAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                         mCustomizationOptionsBundle.getButtonSize(),
                         mCustomizationOptionsBundle.getButtonSize());
                 holder.mNumberButton.setLayoutParams(params);
+
+                if (mCustomizationOptionsBundle.getTypeface() != null) {
+                    holder.mNumberButton.setTypeface(mCustomizationOptionsBundle.getTypeface());
+                }
             }
         }
     }

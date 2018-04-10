@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/mine_shaft"
-    tools:context="com.andrognito.pinlockviewapp.SampleActivity">
+    android:background="@color/mine_shaft">
 
     <ImageView
         android:id="@+id/profile_image"
@@ -45,6 +44,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         app:keypadButtonSize="72dp"
+        app:keypadFontFamily="@font/ubuntu_light"
         app:keypadShowDeleteButton="true"
         app:keypadTextColor="@color/white"
         app:keypadTextSize="18dp" />
