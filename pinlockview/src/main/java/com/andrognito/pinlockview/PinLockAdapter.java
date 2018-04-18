@@ -76,10 +76,10 @@ public class PinLockAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 if (mCustomizationOptionsBundle.getButtonBackgroundDrawable() != null) {
                     if (Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.JELLY_BEAN) {
                         holder.mNumberButton.setBackgroundDrawable(
-                                mCustomizationOptionsBundle.getButtonBackgroundDrawable());
+                                mCustomizationOptionsBundle.getButtonBackgroundDrawable().mutate());
                     } else {
                         holder.mNumberButton.setBackground(
-                                mCustomizationOptionsBundle.getButtonBackgroundDrawable());
+                                mCustomizationOptionsBundle.getButtonBackgroundDrawable().mutate());
                     }
                 }
                 holder.mNumberButton.setTextSize(TypedValue.COMPLEX_UNIT_PX,
@@ -109,6 +109,16 @@ public class PinLockAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                         mCustomizationOptionsBundle.getDeleteButtonSize(),
                         mCustomizationOptionsBundle.getDeleteButtonSize());
                 holder.mButtonImage.setLayoutParams(params);
+
+                if (mCustomizationOptionsBundle.getButtonBackgroundDrawable() != null) {
+                    if (Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+                        holder.mButtonImage.setBackgroundDrawable(
+                                mCustomizationOptionsBundle.getButtonBackgroundDrawable().mutate());
+                    } else {
+                        holder.mButtonImage.setBackground(
+                                mCustomizationOptionsBundle.getButtonBackgroundDrawable().mutate());
+                    }
+                }
             } else {
                 holder.mButtonImage.setVisibility(View.GONE);
             }

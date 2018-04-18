@@ -9,7 +9,6 @@
     <Button
         android:id="@+id/button"
         android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:background="?selectableItemBackgroundBorderless"/>
+        android:layout_height="64dp" />
 
 </LinearLayout>
