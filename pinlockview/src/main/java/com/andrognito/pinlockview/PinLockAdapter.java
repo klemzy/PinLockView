@@ -218,11 +218,11 @@ public class PinLockAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             mDeleteButton = (LinearLayout) itemView.findViewById(R.id.button);
             mButtonImage = (ImageView) itemView.findViewById(R.id.buttonImage);
 
-            if (mCustomizationOptionsBundle.isShowDeleteButton() && mPinLength > 0) {
+            if (mCustomizationOptionsBundle.isShowDeleteButton()) {
                 mDeleteButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (mOnDeleteClickListener != null) {
+                        if (mOnDeleteClickListener != null && mPinLength > 0) {
                             mOnDeleteClickListener.onDeleteClicked();
                         }
                     }
@@ -231,7 +231,7 @@ public class PinLockAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 mDeleteButton.setOnLongClickListener(new View.OnLongClickListener() {
                     @Override
                     public boolean onLongClick(View v) {
-                        if (mOnDeleteClickListener != null) {
+                        if (mOnDeleteClickListener != null && mPinLength > 0) {
                             mOnDeleteClickListener.onDeleteLongClicked();
                         }
                         return true;
@@ -243,6 +243,7 @@ public class PinLockAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
                     @Override
                     public boolean onTouch(View v, MotionEvent event) {
+                        if (mPinLength == 0) return false;
                         if (event.getAction() == MotionEvent.ACTION_DOWN) {
                             mButtonImage.setColorFilter(mCustomizationOptionsBundle
                                     .getDeleteButtonPressesColor());
